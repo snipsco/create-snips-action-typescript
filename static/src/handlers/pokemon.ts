@@ -16,7 +16,7 @@ export const pokemonHandler: Handler = async function (msg, flow) {
     }
 
     // Get the Pokemon data
-    const pokemonId = (pokemonSlot instanceof Array ? pokemonSlot[0] : pokemonSlot).value.value
+    const pokemonId = pokemonSlot.value.value
     const pokemon = await getPokemon(pokemonId)
 
     // End the dialog session.
