@@ -9,7 +9,7 @@
     "watch": "tsc -w",
     "dev": "tsc-watch --noClear --onSuccess \"node action-snips.js\"",
     "lint": "eslint .",
-    "test": "jest --forceExit '^.*\\.spec\\.[jt]s$'",
+    "test": "jest '^.*\\.spec\\.[jt]s$'",
     "clean": "rimraf dist"
   },
   "author": "{{ author }}",

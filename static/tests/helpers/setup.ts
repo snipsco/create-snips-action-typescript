@@ -9,11 +9,13 @@ import index from '../../dist/index'
 export const setupVars : {
     mosquitto: any,
     mosquittoPort: string,
-    mqttClient: MqttClient
+    mqttClient: MqttClient,
+    killHermes: () => void
 } = {
     mosquitto: null,
     mosquittoPort: null,
-    mqttClient: null
+    mqttClient: null,
+    killHermes: null
 }
 
 export function bootstrap() {
@@ -25,7 +27,7 @@ export function bootstrap() {
         console.log('Mosquitto ready!')
         setupVars.mosquitto = mosquitto
         setupVars.mosquittoPort = mosquittoPort
-        index({
+        setupVars.killHermes = index({
             hermesOptions: {
                 address: 'localhost:' + mosquittoPort,
                 logs: true
@@ -62,6 +64,8 @@ export function bootstrap() {
         setTimeout(() => {
             mosquitto.kill()
             console.log('Mosquitto killed.')
+            setupVars.killHermes()
+            console.log('Hermes killed.')
             done()
         }, 500)
     })
