@@ -35,12 +35,6 @@ In the `action-snips.js` file:
 // debug.enable(name + ':*')
 ```
 
-When running from the terminal, to enable full depth object printing:
-
-```sh
-env DEBUG_DEPTH=null npm run dev
-```
-
 ## Test
 
 *Requires [mosquitto](https://mosquitto.org/download/) to be installed.*
