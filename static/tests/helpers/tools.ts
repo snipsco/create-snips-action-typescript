@@ -5,12 +5,12 @@ export function camelize(item) {
     if(typeof item !== 'object' || !item)
         return item
     if(item instanceof Array) {
-        return item.map(value => module.exports.camelize(value))
+        return item.map(value => camelize(value))
     }
     Object.entries(item).forEach(([ key, value ]) => {
         const camelizedKey = camelcase(key)
         const isSameKey = key === camelizedKey
-        item[camelizedKey] = module.exports.camelize(value)
+        item[camelizedKey] = camelize(value)
         if(!isSameKey) {
             delete item[key]
         }
