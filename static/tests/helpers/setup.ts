@@ -27,7 +27,7 @@ export function bootstrap() {
         console.log('Mosquitto ready!')
         setupVars.mosquitto = mosquitto
         setupVars.mosquittoPort = mosquittoPort
-        setupVars.killHermes = index({
+        setupVars.killHermes = await index({
             hermesOptions: {
                 address: 'localhost:' + mosquittoPort,
                 logs: true
