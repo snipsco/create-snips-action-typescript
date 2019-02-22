@@ -8,7 +8,7 @@
     "build": "npm run clean && tsc",
     "watch": "tsc -w",
     "dev": "tsc-watch --noClear --onSuccess \"node action-snips.js\"",
-    "lint": "eslint .",
+    "lint": "eslint \"**/*.js\" \"**/*.ts\"",
     "test": "jest '^.*\\.spec\\.[jt]s$'",
     "clean": "rimraf dist"
   },
