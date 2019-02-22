@@ -20,6 +20,7 @@ export const setupVars : {
 
 export function bootstrap() {
     beforeAll(async () => {
+        require('debug').enable('*:error')
         const mosquittoPort = await getFreePort()
         console.log('Launching mosquitto on port [' + mosquittoPort + ']')
         // To print full mosquitto logs, replace stdio: 'ignore' with stdio: 'inherit'
