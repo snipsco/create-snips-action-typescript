@@ -1,23 +1,23 @@
-import { IntentMessage, NluSlot } from 'hermes-javascript'
+import { IntentMessage, NluSlot, slotType } from 'hermes-javascript'
 
 function geometricMean (dataSet: number[]) {
     return Math.pow(dataSet.reduce((accumulator, element) => accumulator * element, 1), 1/dataSet.length)
 }
 
-type GetSlotsByNameReturn<T> =
-    T extends undefined ? NluSlot[] :
-    T extends true ? NluSlot :
-    NluSlot[]
+type GetSlotsByNameReturn<T, S extends slotType> =
+    T extends undefined ? NluSlot<S>[] :
+    T extends true ? NluSlot<S> :
+    NluSlot<S>[]
 
 export const message = {
     // Helper to filter slots given their name, and potentially a lower threshold for the confidence level.
     // You can also use the onlyMostConfident boolean to return only a single slot with the highest confidence.
     // If no slot match the criterias, then returns null.
-    getSlotsByName: <T extends boolean = undefined>(
+    getSlotsByName: <S extends slotType = slotType, T extends boolean = undefined>(
         message: IntentMessage,
         slotName: string,
         { threshold = 0, onlyMostConfident = undefined } : { threshold?: number, onlyMostConfident?: T } = {}
-    ) : GetSlotsByNameReturn<T> => {
+    ) : GetSlotsByNameReturn<T, S> => {
         if(onlyMostConfident) {
             return message.slots.reduce((acc, slot) => {
                 if(slot.slotName === slotName && slot.confidenceScore > threshold) {
