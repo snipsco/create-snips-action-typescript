@@ -7,7 +7,7 @@ import { SUPPORTED_LOCALES, DEFAULT_LOCALE } from '../constants'
 
 let config: {[key: string]: string} = null
 
-function init () {
+function init (configOptions = { mock: {}}) {
     try {
         // Get the config file.
         const configFilePath = path.resolve(__dirname + '/../../config.ini')
@@ -16,7 +16,8 @@ function init () {
         for (let section in iniConfig) {
             config = {
                 ...config,
-                ...camelize.camelizeKeys(iniConfig[section])
+                ...camelize.camelizeKeys(iniConfig[section]),
+                ...(configOptions.mock || {})
             }
         }
         if(!config.locale) {
