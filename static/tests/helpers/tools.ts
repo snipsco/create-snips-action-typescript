@@ -1,4 +1,4 @@
-import { createServer } from 'net'
+import { createServer, AddressInfo } from 'net'
 import camelcase from 'camelcase'
 
 export function camelize(item) {
@@ -18,14 +18,14 @@ export function camelize(item) {
     return item
 }
 
-export function getFreePort(): Promise<string> {
+export function getFreePort(): Promise<number> {
     return new Promise((resolve, reject) => {
         const server = createServer()
         server.on('error', err => {
             reject(err)
         })
         server.on('listening', () => {
-            const port: string = server.address()['port']
+            const port: number = (server.address() as AddressInfo)['port']
             server.close()
             resolve(port)
         })

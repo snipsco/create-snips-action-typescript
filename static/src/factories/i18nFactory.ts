@@ -3,7 +3,7 @@ import path from 'path'
 import i18next from 'i18next'
 import { DEFAULT_LANGUAGE } from '../constants'
 
-let i18n: (key: string | string[], options?: {[key: string]: any}) => string & string[] = null
+let i18n: (key: string | string[], options?: {[key: string]: any}) => string & string[]
 
 async function init(language = DEFAULT_LANGUAGE, i18nOptions = { mock: false }) {
     try {

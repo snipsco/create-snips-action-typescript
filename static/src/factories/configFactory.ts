@@ -5,7 +5,7 @@ import { camelize } from '../utils/camelize'
 import { logger } from '../utils/logger'
 import { SUPPORTED_LOCALES, DEFAULT_LOCALE } from '../constants'
 
-let config: {[key: string]: string} = null
+let config: {[key: string]: string} = {}
 
 function init (configOptions = { mock: {}}) {
     try {

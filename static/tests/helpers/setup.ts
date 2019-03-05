@@ -16,7 +16,7 @@ export const setupVars : {
     mosquittoPort: null,
     mqttClient: null,
     killHermes: null
-}
+} as any
 
 export function bootstrap() {
     beforeAll(async () => {
