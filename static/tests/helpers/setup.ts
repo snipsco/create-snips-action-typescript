@@ -8,7 +8,7 @@ import index from '../../dist/index'
 
 export const setupVars : {
     mosquitto: any,
-    mosquittoPort: string,
+    mosquittoPort: number,
     mqttClient: MqttClient,
     killHermes: () => void
 } = {
@@ -24,7 +24,7 @@ export function bootstrap() {
         const mosquittoPort = await getFreePort()
         console.log('Launching mosquitto on port [' + mosquittoPort + ']')
         // To print full mosquitto logs, replace stdio: 'ignore' with stdio: 'inherit'
-        const mosquitto = spawn('mosquitto', ['-p', mosquittoPort, '-v'], { stdio: 'ignore' })
+        const mosquitto = spawn('mosquitto', ['-p', '' + mosquittoPort, '-v'], { stdio: 'ignore' })
         console.log('Mosquitto ready!')
         setupVars.mosquitto = mosquitto
         setupVars.mosquittoPort = mosquittoPort
