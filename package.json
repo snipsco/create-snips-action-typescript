@@ -1,6 +1,6 @@
 {
   "name": "create-snips-action-typescript",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Generator for writing Snips action code in Typescript.",
   "main": "script.js",
   "bin": {
