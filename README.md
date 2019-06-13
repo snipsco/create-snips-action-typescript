@@ -1,3 +1,5 @@
+## DEPRECATED! Use [create-snips-action](https://github.com/snipsco/create-snips-action).
+
 # create-snips-action-typescript
 #### Generator for writing Snips action code in Typescript.
 
